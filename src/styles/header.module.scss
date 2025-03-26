@@ -1,0 +1,63 @@
+.header {
+  max-width: 1296px;
+  margin: 24px auto 0 auto;
+  background-color: white;
+  box-shadow: 0 3px 16px rgba(142, 134, 171, 0.05);
+  padding: 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo,
+  &__name,
+  &__ic-log {
+    display: inline-flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__logo {
+    background-image: url("../../public/logo-sm.png");
+    width: 38px;
+    aspect-ratio: 1 / 1;
+  }
+  &__name {
+    width: 49px;
+    height: 20px;
+    background-image: url("../../public/logo-dark.png");
+  }
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+
+    a {
+      color: #22c55e;
+      text-decoration: none;
+    }
+  }
+  &__log {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    transition: 0.4s all;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &__ic-log {
+    background-image: url("../../public/icons8-login-48.png");
+    width: 20px;
+    aspect-ratio: 1 / 1;
+    transform: rotate(180deg);
+  }
+}
