@@ -8,6 +8,7 @@ import { RouterProvider } from "react-router";
 import LayoutRoot from "./components/LayoutRoot";
 import HomePage from "./components/HomePage";
 import SignIn from "./components/SignIn";
+import UserNew from "./components/UserNew";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "create-new-user",
+        element: <UserNew />,
       },
     ],
   },

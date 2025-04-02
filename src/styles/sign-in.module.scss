@@ -1,0 +1,93 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  &__container {
+    width: 416px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 3px 16px rgba(142, 134, 171, 0.05);
+    border-radius: 8px;
+  }
+  &__top {
+    background-color: black;
+    padding: 24px;
+    text-align: center;
+    color: white;
+  }
+  &__logo {
+    background-image: url(../../public/logo-sm.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-flex;
+    width: 50px;
+    margin: 0 0 24px 0;
+    aspect-ratio: 1 / 1;
+  }
+  &__heading {
+    font-size: 18px;
+    margin: 0 0 6px 0;
+  }
+  &__subheading {
+    font-size: 13px;
+    color: #96a0b5;
+  }
+  &__form {
+    padding: 36px 24px;
+  }
+  &__label {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: #656d9a;
+  }
+  input {
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #e2e7f1;
+    padding: 8px 15px;
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
+    color: #c7c7c7;
+    font-family: vnMedium, sans-serif;
+    font-size: 12px;
+    &::placeholder {
+      color: #c7c7c7;
+      font-family: vnMedium, sans-serif;
+      font-size: 12px;
+    }
+  }
+  &__btn {
+    margin: 36px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    color: white;
+    font-size: 13px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #22c55e;
+    padding: 8px 15px;
+    height: 38px;
+    font-family: vnMedium, sans-serif;
+    transition: 0.4s all;
+    gap: 8px;
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+  &__icon {
+    width: 20px;
+    aspect-ratio: 1 / 1;
+    background-image: url(../../public/icons8-login-64.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

@@ -16,7 +16,7 @@ export default function Header() {
             Good Morning, <strong>James!</strong>
           </div>
           <div className={s.header__log}>
-            <Link to="/signin">Log In</Link>
+            <Link to="/sign-in">Log In</Link>
             <span className={s["header__ic-log"]}></span>
           </div>
         </div>
