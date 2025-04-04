@@ -1,8 +1,11 @@
 import { useNavigate, useRoutes } from "react-router-dom";
 import s from "../styles/user-listing.module.scss";
+import { useEffect } from "react";
 
 export default function UserListing() {
   const navigate = useNavigate();
+
+  useEffect(() => {}, []);
 
   return (
     <div className={s.list}>
@@ -29,29 +32,7 @@ export default function UserListing() {
           <td>VTI</td>
           <td>Ha Noi</td>
           <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Simon Young</td>
-          <td>Developer</td>
-          <td>VTI</td>
-          <td>Ha Noi</td>
-          <td>
-            <button></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Simon Young</td>
-          <td>Developer</td>
-          <td>VTI</td>
-          <td>Ha Noi</td>
-          <td>
-            <button></button>
+            <button onClick={() => navigate("user/1")}></button>
             <button></button>
             <button></button>
           </td>

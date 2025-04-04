@@ -9,6 +9,9 @@ import LayoutRoot from "./components/LayoutRoot";
 import HomePage from "./components/HomePage";
 import SignIn from "./components/SignIn";
 import UserNew from "./components/UserNew";
+import UserDetail from "./components/UserDetail";
+import { Provider } from "react-redux";
+import { store } from "./stores";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
         path: "create-new-user",
         element: <UserNew />,
       },
+      {
+        path: "user/:id",
+        element: <UserDetail />,
+      },
     ],
   },
   {
@@ -33,11 +40,13 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <RouterProvider router={router}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </RouterProvider>
+  <Provider store={store}>
+    <RouterProvider router={router}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </RouterProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

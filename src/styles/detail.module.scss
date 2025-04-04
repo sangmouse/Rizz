@@ -1,0 +1,57 @@
+.detail {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px auto;
+  max-width: 1296px;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: 0 3px 16px rgba(142, 134, 171, 0.05);
+    border-bottom: 1px dashed #ececec;
+  }
+
+  &__logo-wrap {
+    display: inline-flex;
+  }
+
+  &__logo {
+    background-image: url(../../public/icons8-login-48.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-flex;
+    width: 30px;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__icon {
+    width: 22px;
+    aspect-ratio: 1 / 1;
+    display: inline-flex;
+    background-image: url(../../public/icons8-cake-50.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  ul {
+    padding: 24px;
+    margin: 0;
+    list-style: none;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+}
