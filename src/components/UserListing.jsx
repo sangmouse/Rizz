@@ -1,11 +1,20 @@
-import { useNavigate, useRoutes } from "react-router-dom";
+import { Link, useNavigate, useRoutes } from "react-router-dom";
 import s from "../styles/user-listing.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserListing() {
+  const [users, setUsers] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  const fetchUsers = async () => {
+    const data = await fetch("http://localhost:8080/users");
+    const response = await data.json();
+    setUsers(response);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   return (
     <div className={s.list}>
@@ -26,17 +35,21 @@ export default function UserListing() {
           <th>Address</th>
           <th>Action</th>
         </tr>
-        <tr>
-          <td>Simon Young</td>
-          <td>Developer</td>
-          <td>VTI</td>
-          <td>Ha Noi</td>
-          <td>
-            <button onClick={() => navigate("user/1")}></button>
-            <button></button>
-            <button></button>
-          </td>
-        </tr>
+        {users?.map((user) => {
+          return (
+            <tr>
+              <td>{user?.username}</td>
+              <td>{user?.role}</td>
+              <td>{user?.company}</td>
+              <td>{user?.address}</td>
+              <td>
+                <button onClick={() => navigate("user/1")}></button>
+                <button></button>
+                <button></button>
+              </td>
+            </tr>
+          );
+        })}
       </table>
     </div>
   );

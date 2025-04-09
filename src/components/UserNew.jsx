@@ -1,14 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "../styles/user-new.module.scss";
+import { useState } from "react";
 
 export default function UserNew() {
+  const [msgError, setMsgError] = useState("");
+  const [msgSuccess, setMsgSuccess] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    address: "",
+    role: "developer",
+    company: "vti",
+  });
+  const navigate = useNavigate();
+  let timeoutID = null;
+
+  const onSubmit = () => {
+    clearTimeout(timeoutID);
+    if (!user.username?.trim()?.length || !user?.address?.trim()?.length) {
+      setMsgError("Please fill required field!");
+      return;
+    }
+    fetch("http://localhost:8080/users", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((res) => {
+      setMsgSuccess("Created user successfully");
+      timeoutID = setTimeout(() => navigate("/"), 1000);
+    });
+  };
+
   return (
     <div className={s.form}>
-      <div className={s.form__logo}>
-        <Link to="/">
-          <span></span>
-        </Link>
-      </div>
+      {msgError && <div className={s.form__error}>{msgError}</div>}
+      {msgSuccess && (
+        <div className={`${s.form__error} ${s.form__success}`}>
+          {msgSuccess}
+        </div>
+      )}
       <div className={s.form__inner}>
         <div className={s.form__item}>
           <div className={s.form__label}>Username</div>
@@ -17,15 +48,43 @@ export default function UserNew() {
             name="username"
             id="username"
             placeholder="Username"
+            value={user?.username}
+            onChange={(e) => {
+              setMsgError("");
+              setUser({
+                ...user,
+                username: e.target.value,
+              });
+            }}
           />
         </div>
         <div className={s.form__item}>
           <div className={s.form__label}>Address</div>
-          <input type="text" placeholder="Address" />
+          <input
+            type="text"
+            placeholder="Address"
+            value={user?.address}
+            onChange={(e) => {
+              setMsgError("");
+              setUser({
+                ...user,
+                address: e.target.value,
+              });
+            }}
+          />
         </div>
         <div className={s.form__item}>
           <div className={s.form__label}>Role</div>
-          <select name="role" id="role">
+          <select
+            value={user?.role}
+            onChange={(e) => {
+              setMsgError("");
+              setUser({
+                ...user,
+                role: e.target.value,
+              });
+            }}
+          >
             <option value="dev">Developer</option>
             <option value="ba">Business Analyst</option>
             <option value="pm">Project Manager</option>
@@ -34,7 +93,16 @@ export default function UserNew() {
         </div>
         <div className={s.form__item}>
           <div className={s.form__label}>Company</div>
-          <select name="role" id="role">
+          <select
+            value={user?.company}
+            onChange={(e) => {
+              setMsgError("");
+              setUser({
+                ...user,
+                company: e.target.value,
+              });
+            }}
+          >
             <option value="vti">VTI Group</option>
             <option value="fsoft">FPT Software</option>
             <option value="cmc">CMC Global</option>
@@ -42,7 +110,9 @@ export default function UserNew() {
           </select>
         </div>
         <div className={s["form__btn-group"]}>
-          <button className={s.form__btn}>Submit</button>
+          <button className={s.form__btn} onClick={onSubmit}>
+            Submit
+          </button>
           <Link to="/" className={s.form__btn}>
             Cancel
           </Link>

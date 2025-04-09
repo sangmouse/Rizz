@@ -43,7 +43,7 @@ root.render(
   <Provider store={store}>
     <RouterProvider router={router}>
       <React.StrictMode>
-        <App />
+        <LayoutRoot />
       </React.StrictMode>
     </RouterProvider>
   </Provider>

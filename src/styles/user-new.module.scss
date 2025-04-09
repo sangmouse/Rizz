@@ -5,6 +5,9 @@
   overflow: hidden;
   margin: 30px auto;
   max-width: 1296px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   &__inner {
     display: flex;
@@ -79,5 +82,12 @@
     display: flex;
     align-items: center;
     gap: 6px;
+  }
+  &__error {
+    font-size: 13px;
+    color: #ef4d56;
+  }
+  &__success {
+    color: #22c55e;
   }
 }
