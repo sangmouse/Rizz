@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import s from "../styles/user-new.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function UserNew() {
+  const [userDetail, setUserDetail] = useState(null);
   const [msgError, setMsgError] = useState("");
   const [msgSuccess, setMsgSuccess] = useState("");
   const [user, setUser] = useState({
@@ -12,6 +13,8 @@ export default function UserNew() {
     company: "vti",
   });
   const navigate = useNavigate();
+  const params = useParams();
+  const id = params?.id;
   let timeoutID = null;
 
   const onSubmit = () => {
@@ -20,17 +23,54 @@ export default function UserNew() {
       setMsgError("Please fill required field!");
       return;
     }
-    fetch("http://localhost:8080/users", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => {
-      setMsgSuccess("Created user successfully");
-      timeoutID = setTimeout(() => navigate("/"), 1000);
-    });
+    if (!userDetail) {
+      fetch("http://localhost:8080/users", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => {
+        setMsgSuccess("Created user successfully");
+        timeoutID = setTimeout(() => navigate("/"), 1000);
+      });
+    } else {
+      fetch(`http://localhost:8080/users/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => {
+        setMsgSuccess("Updated user successfully");
+        timeoutID = setTimeout(() => navigate("/"), 1000);
+      });
+    }
   };
+
+  const fetchUserDetail = async () => {
+    const data = await fetch(`http://localhost:8080/users/${params?.id}`);
+    const res = await data.json();
+    setUserDetail(res);
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchUserDetail();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userDetail) {
+      setUser({
+        ...user,
+        username: userDetail?.username,
+        address: userDetail?.address,
+        role: userDetail?.role,
+        company: userDetail?.company,
+      });
+    }
+  }, [userDetail]);
 
   return (
     <div className={s.form}>

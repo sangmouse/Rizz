@@ -1,6 +1,7 @@
 import { Link, useNavigate, useRoutes } from "react-router-dom";
 import s from "../styles/user-listing.module.scss";
 import { useEffect, useState } from "react";
+import { companyMapping, roleMapping } from "../constants";
 
 export default function UserListing() {
   const [users, setUsers] = useState(null);
@@ -10,6 +11,11 @@ export default function UserListing() {
     const data = await fetch("http://localhost:8080/users");
     const response = await data.json();
     setUsers(response);
+  };
+
+  const onRemove = async (id) => {
+    await fetch(`http://localhost:8080/users/${id}`, { method: "DELETE" });
+    await fetchUsers();
   };
 
   useEffect(() => {
@@ -39,13 +45,15 @@ export default function UserListing() {
           return (
             <tr>
               <td>{user?.username}</td>
-              <td>{user?.role}</td>
-              <td>{user?.company}</td>
+              <td>{roleMapping(user?.role)}</td>
+              <td>{companyMapping(user?.company)}</td>
               <td>{user?.address}</td>
               <td>
-                <button onClick={() => navigate("user/1")}></button>
-                <button></button>
-                <button></button>
+                <button onClick={() => navigate(`user/${user?.id}`)}></button>
+                <button
+                  onClick={() => navigate(`user/edit/${user?.id}`)}
+                ></button>
+                <button onClick={() => onRemove(user?.id)}></button>
               </td>
             </tr>
           );

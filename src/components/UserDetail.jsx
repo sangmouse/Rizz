@@ -1,7 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import s from "../styles/detail.module.scss";
+import { useEffect, useState } from "react";
+import { companyMapping, roleMapping } from "../constants";
 
 export default function UserDetail() {
+  const [userDetail, setUserDetail] = useState(null);
+  const params = useParams();
+
+  const fetchUserDetail = async () => {
+    const data = await fetch(`http://localhost:8080/users/${params?.id}`);
+    const res = await data.json();
+    setUserDetail(res);
+  };
+
+  useEffect(() => {
+    fetchUserDetail();
+  }, []);
+
   return (
     <div className={s.detail}>
       <div>
@@ -16,25 +31,25 @@ export default function UserDetail() {
         <li>
           <span className={s.detail__icon}></span>
           <div className={s.detail__content}>
-            <strong>Username</strong> : mannat.theme@gmail.com
+            <strong>Username</strong> : {userDetail?.username}
           </div>
         </li>
         <li>
           <span className={s.detail__icon}></span>
           <div className={s.detail__content}>
-            <strong>Role</strong> : mannat.theme@gmail.com
+            <strong>Role</strong> : {roleMapping(userDetail?.role)}
           </div>
         </li>
         <li>
           <span className={s.detail__icon}></span>
           <div className={s.detail__content}>
-            <strong>Department</strong> : mannat.theme@gmail.com
+            <strong>Company</strong> : {companyMapping(userDetail?.company)}
           </div>
         </li>
         <li>
           <span className={s.detail__icon}></span>
           <div className={s.detail__content}>
-            <strong>Address</strong> : mannat.theme@gmail.com
+            <strong>Address</strong> : {userDetail?.address}
           </div>
         </li>
       </ul>

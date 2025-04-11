@@ -2,23 +2,9 @@
   "users": [
     {
       "id": "8f1a",
-      "username": "John",
+      "username": " Aaron Poulin",
       "address": "HCM",
-      "role": "developer",
-      "company": "viettel"
-    },
-    {
-      "id": "fec8",
-      "username": "",
-      "address": "",
-      "role": "developer",
-      "company": "vti"
-    },
-    {
-      "id": "8f34",
-      "username": "John",
-      "address": "HCM",
-      "role": "developer",
+      "role": "pm",
       "company": "fsoft"
     },
     {
