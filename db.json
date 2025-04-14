@@ -1,25 +1,32 @@
 {
   "users": [
     {
-      "id": "e166",
-      "username": "James",
-      "address": "NY City",
-      "role": "dev",
-      "company": "cmc"
-    },
-    {
-      "id": "83a9",
-      "username": "Mark",
-      "address": "Chicago",
-      "role": "tester",
-      "company": "vti"
-    },
-    {
       "id": "16fd",
       "username": "Larry",
       "address": "Texas",
       "role": "ba",
       "company": "fsoft"
+    },
+    {
+      "id": "b340",
+      "username": "Blossom Dickerson",
+      "address": "Dhanbad",
+      "role": "ba",
+      "company": "viettel"
+    },
+    {
+      "id": "2d47",
+      "username": "Unity Pugh",
+      "address": "Curicó",
+      "role": "developer",
+      "company": "vti"
+    },
+    {
+      "id": "f5df",
+      "username": "Theodore Duran",
+      "address": "Norman",
+      "role": "ba",
+      "company": "cmc"
     }
   ]
 }
