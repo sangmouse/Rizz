@@ -37,7 +37,7 @@ export default function UserListing() {
         <tr>
           <th>User</th>
           <th>Role</th>
-          <th>Department</th>
+          <th>Company</th>
           <th>Address</th>
           <th>Action</th>
         </tr>

@@ -37,7 +37,8 @@
     align-items: center;
     gap: 24px;
 
-    a {
+    a,
+    button {
       color: #22c55e;
       text-decoration: none;
     }
@@ -52,6 +53,15 @@
 
     &:hover {
       opacity: 0.5;
+    }
+
+    button {
+      font-size: 14px;
+      background-color: transparent;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0;
     }
   }
   &__ic-log {

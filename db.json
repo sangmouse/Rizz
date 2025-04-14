@@ -1,17 +1,10 @@
 {
   "users": [
     {
-      "id": "8f1a",
-      "username": " Aaron Poulin",
-      "address": "HCM",
-      "role": "pm",
-      "company": "fsoft"
-    },
-    {
       "id": "e166",
       "username": "James",
       "address": "NY City",
-      "role": "pm",
+      "role": "dev",
       "company": "cmc"
     },
     {

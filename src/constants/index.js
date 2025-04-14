@@ -42,3 +42,8 @@ export const roleMapping = (param) => {
 export const companyMapping = (param) => {
   return COMPANY.find((company) => company.value === param)?.label;
 };
+
+export const ACCOUNT = {
+  username: "ZZDiamond",
+  password: "dinamond@123",
+};

@@ -90,4 +90,13 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+  &__error {
+    font-size: 13px;
+    color: #ef4d56;
+    margin: 0 0 8px 0;
+  }
+  &__success {
+    color: #22c55e;
+    margin: 0 0 8px 0;
+  }
 }

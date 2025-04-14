@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "../styles/header.module.scss";
 
 export default function Header() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  const onSubmit = () => {
+    if (!user) {
+      navigate("/sign-in");
+    } else {
+      localStorage.removeItem("user");
+      navigate("/sign-in");
+    }
+  };
   return (
     <div>
       <div className={s.header}>
@@ -13,10 +24,12 @@ export default function Header() {
         </div>
         <div className={s.header__content}>
           <div>
-            Good Morning, <strong>James!</strong>
+            Good Morning, <strong>{user?.username}!</strong>
           </div>
           <div className={s.header__log}>
-            <Link to="/sign-in">Log In</Link>
+            <button onClick={onSubmit}>
+              {user?.username ? "Sign Out" : "Sign In"}
+            </button>
             <span className={s["header__ic-log"]}></span>
           </div>
         </div>
