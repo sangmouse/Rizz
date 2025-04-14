@@ -9,7 +9,7 @@ export default function UserNew() {
   const [user, setUser] = useState({
     username: "",
     address: "",
-    role: "developer",
+    role: "dev",
     company: "vti",
   });
   const navigate = useNavigate();

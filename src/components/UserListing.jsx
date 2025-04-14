@@ -33,7 +33,10 @@ export default function UserListing() {
           <span>+</span>Add User
         </button>
       </div>
-      <div className={s.list__count}>{users?.length} entries</div>
+      {users?.length && (
+        <div className={s.list__count}>{users?.length} entries</div>
+      )}
+
       <table>
         <tr>
           <th>User</th>

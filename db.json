@@ -15,18 +15,18 @@
       "company": "viettel"
     },
     {
-      "id": "2d47",
-      "username": "Unity Pugh",
-      "address": "Curicó",
-      "role": "developer",
-      "company": "vti"
-    },
-    {
       "id": "f5df",
       "username": "Theodore Duran",
       "address": "Norman",
-      "role": "ba",
+      "role": "dev",
       "company": "cmc"
+    },
+    {
+      "id": "e761",
+      "username": "Theodore Duran",
+      "address": "Curicó",
+      "role": "dev",
+      "company": "vti"
     }
   ]
 }
